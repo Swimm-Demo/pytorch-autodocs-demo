@@ -150,7 +150,7 @@ torchgen/packaged/*
 *.swj
 *.swk
 *.swl
-*.swm
+# *.swm
 *.swn
 *.swo
 *.swp
