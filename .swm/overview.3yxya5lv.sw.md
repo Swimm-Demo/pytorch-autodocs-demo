@@ -119,7 +119,6 @@ Torch is a core library in PyTorch that provides a wide range of functionalities
   - <SwmLink doc-title="Converting a Model to NNAPI">[Converting a Model to NNAPI](/.swm/converting-a-model-to-nnapi.0zt4zne6.sw.md)</SwmLink>
   - <SwmLink doc-title="Overview of the Hessian Function">[Overview of the Hessian Function](/.swm/overview-of-the-hessian-function.ahcy61q7.sw.md)</SwmLink>
   - <SwmLink doc-title="Overview of fw_compiler_base">[Overview of fw_compiler_base](.swm/overview-of-fw_compiler_base.zy5uyk0e.sw.md)</SwmLink>
-  - <SwmLink doc-title="Role of __call__ Method">[Role of \__call_\_ Method](/.swm/role-of-__call__-method.hby47b7f.sw.md)</SwmLink>
   - <SwmLink doc-title="Handling Real Inputs with Deferred Execution">[Handling Real Inputs with Deferred Execution](/.swm/handling-real-inputs-with-deferred-execution.qjkc5g1d.sw.md)</SwmLink>
   - <SwmLink doc-title="Gradient Checking for Sparse Tensors">[Gradient Checking for Sparse Tensors](/.swm/gradient-checking-for-sparse-tensors.7iqome21.sw.md)</SwmLink>
   - <SwmLink doc-title="Gradient Checking with Sparse Support">[Gradient Checking with Sparse Support](/.swm/gradient-checking-with-sparse-support.k87x4ufq.sw.md)</SwmLink>
