@@ -3,7 +3,7 @@ title: Overview of Neural Network Utilities
 ---
 # Introduction to Neural Network Utilities
 
-Neural Network Utilities in PyTorch provide a collection of functions and classes that assist with various operations related to neural networks. These utilities streamline the process of preparing data for neural network training and inference, making it easier to handle variable-length sequences and other common tasks.
+Neural Network Utilities in <SwmToken path="/torch/nn/utils/rnn.py" pos="80:21:21" line-data="        and all functions that construct a :class:`PackedSequence` in PyTorch">`PyTorch`</SwmToken> provide a collection of functions and classes that assist with various operations related to neural networks. These utilities streamline the process of preparing data for neural network training and inference, making it easier to handle variable-length sequences and other common tasks.
 
 ## Lazy Imports
 
@@ -11,7 +11,7 @@ Neural Network Utilities in PyTorch provide a collection of functions and classe
 
 ---
 
-The `lazy_deprecated_import` function helps manage deprecated packages or modules by lazily importing them and issuing a deprecation warning. This is useful for maintaining backward compatibility while encouraging the use of updated modules.
+The <SwmToken path="/torch/nn/utils/_deprecation_utils.py" pos="12:2:2" line-data="def lazy_deprecated_import(">`lazy_deprecated_import`</SwmToken> function helps manage deprecated packages or modules by lazily importing them and issuing a deprecation warning. This is useful for maintaining backward compatibility while encouraging the use of updated modules.
 
 ```python
 def lazy_deprecated_import(
@@ -42,15 +42,15 @@ def lazy_deprecated_import(
 
 ## Handling Packed Sequences
 
-Packed sequences are essential when working with Recurrent Neural Networks (RNNs) as they allow for more efficient processing of variable-length sequences. The `pack_padded_sequence` function converts padded sequences into a packed sequence, which can then be processed by RNN modules more efficiently.
+Packed sequences are essential when working with Recurrent Neural Networks (RNNs) as they allow for more efficient processing of variable-length sequences. The <SwmToken path="/torch/nn/utils/rnn.py" pos="280:2:2" line-data="def pack_padded_sequence(">`pack_padded_sequence`</SwmToken> function converts padded sequences into a packed sequence, which can then be processed by RNN modules more efficiently.
 
 ## Padding Sequences
 
-Padding sequences is a common operation when dealing with batches of variable-length sequences. The `pad_sequence` function pads a list of variable-length tensors with a specified padding value, ensuring that all sequences in a batch have the same length.
+Padding sequences is a common operation when dealing with batches of variable-length sequences. The <SwmToken path="/aten/src/ATen/native/PackedSequence.cpp" pos="205:2:2" line-data="Tensor pad_sequence(TensorList sequences, bool batch_first, double padding_value, const c10::string_view padding_side) {">`pad_sequence`</SwmToken> function pads a list of variable-length tensors with a specified padding value, ensuring that all sequences in a batch have the same length.
 
 ## Gradient Clipping
 
-Gradient clipping is a technique used to prevent exploding gradients in neural networks. The `clip_grad_norm_` and `clip_grad_value_` functions are utilities for clipping gradients, ensuring that the gradients do not exceed a specified threshold.
+Gradient clipping is a technique used to prevent exploding gradients in neural networks. The <SwmToken path="/torch/csrc/api/include/torch/nn/utils/clip_grad.h" pos="21:4:4" line-data="inline double clip_grad_norm_(">`clip_grad_norm_`</SwmToken> and <SwmToken path="/torch/nn/utils/clip_grad.py" pos="149:2:2" line-data="def clip_grad_value_(">`clip_grad_value_`</SwmToken> functions are utilities for clipping gradients, ensuring that the gradients do not exceed a specified threshold.
 
 ## Weight Reshaping
 
@@ -58,7 +58,7 @@ Gradient clipping is a technique used to prevent exploding gradients in neural n
 
 ---
 
-The `reshape_weight_to_matrix` function reshapes a weight tensor to a 2D matrix, which is useful for certain linear algebra operations in neural networks.
+The <SwmToken path="/torch/nn/utils/spectral_norm.py" pos="51:3:3" line-data="    def reshape_weight_to_matrix(self, weight: torch.Tensor) -&gt; torch.Tensor:">`reshape_weight_to_matrix`</SwmToken> function reshapes a weight tensor to a <SwmToken path="/aten/src/ATen/native/PackedSequence.cpp" pos="75:35:35" line-data="  // To understand what&#39;s going on in this loop imagine that the input is a padded 2D">`2D`</SwmToken> matrix, which is useful for certain linear algebra operations in neural networks.
 
 ```python
     def reshape_weight_to_matrix(self, weight: torch.Tensor) -> torch.Tensor:
@@ -80,13 +80,13 @@ The `reshape_weight_to_matrix` function reshapes a weight tensor to a 2D matrix,
 
 Several utilities assist with convolution operations, such as normalizing convolution parameters and retrieving dilation values.
 
-### conv_normalizer
+### <SwmToken path="/torch/nn/utils/_expanded_weights/conv_utils.py" pos="38:2:2" line-data="def conv_normalizer(">`conv_normalizer`</SwmToken>
 
 <SwmSnippet path="/torch/nn/utils/_expanded_weights/conv_utils.py" line="38">
 
 ---
 
-The `conv_normalizer` function normalizes convolution parameters such as input, weight, bias, stride, padding, dilation, and groups. It returns a tuple containing the input and weight, along with a dictionary of the other parameters.
+The <SwmToken path="/torch/nn/utils/_expanded_weights/conv_utils.py" pos="38:2:2" line-data="def conv_normalizer(">`conv_normalizer`</SwmToken> function normalizes convolution parameters such as input, weight, bias, stride, padding, dilation, and groups. It returns a tuple containing the input and weight, along with a dictionary of the other parameters.
 
 ```python
 def conv_normalizer(
@@ -111,13 +111,13 @@ def conv_normalizer(
 
 </SwmSnippet>
 
-### get_dilation
+### <SwmToken path="/torch/nn/utils/_expanded_weights/conv_utils.py" pos="67:3:3" line-data="    def get_dilation(i):">`get_dilation`</SwmToken>
 
 <SwmSnippet path="/torch/nn/utils/_expanded_weights/conv_utils.py" line="66">
 
 ---
 
-The `get_dilation` function is defined to handle both tuple and non-tuple dilation values, providing flexibility in specifying dilation for convolution operations.
+The <SwmToken path="/torch/nn/utils/_expanded_weights/conv_utils.py" pos="67:3:3" line-data="    def get_dilation(i):">`get_dilation`</SwmToken> function is defined to handle both tuple and non-tuple dilation values, providing flexibility in specifying dilation for convolution operations.
 
 ```python
 def int_padding_for_string_padding(func, padding_style, dilation, kernel_size):

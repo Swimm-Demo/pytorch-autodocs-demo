@@ -161,7 +161,7 @@ classDef Style3 color:#000000,fill:#AA7CB9
 
 ## Inline Function
 
-The `Inline` function is responsible for inlining function calls within a given graph. It first logs the state of the graph before inlining, then calls the `inlineCalls` function to perform the actual inlining, and finally logs the state of the graph after inlining.
+The <SwmToken path="/torch/csrc/jit/passes/inliner.cpp" pos="91:2:2" line-data="void Inline(Graph&amp; graph) {">`Inline`</SwmToken> function is responsible for inlining function calls within a given graph. It first logs the state of the graph before inlining, then calls the <SwmToken path="/torch/csrc/jit/passes/inliner.cpp" pos="93:1:1" line-data="  inlineCalls(graph.block());">`inlineCalls`</SwmToken> function to perform the actual inlining, and finally logs the state of the graph after inlining.
 
 ```c++
 void Inline(Graph& graph) {
@@ -179,9 +179,9 @@ void Inline(Graph& graph) {
 
 ---
 
-## inlineCalls Function
+## <SwmToken path="/torch/csrc/jit/passes/inliner.cpp" pos="32:4:4" line-data="static void inlineCalls(Block* block) {">`inlineCalls`</SwmToken> Function
 
-The `inlineCalls` function iterates over the nodes in a block and inlines function and method calls. It handles different types of calls such as `prim::CallFunction` and `prim::CallMethod`, and recursively processes sub-blocks. This function is crucial for optimizing the graph by replacing function calls with their actual implementations.
+The <SwmToken path="/torch/csrc/jit/passes/inliner.cpp" pos="32:4:4" line-data="static void inlineCalls(Block* block) {">`inlineCalls`</SwmToken> function iterates over the nodes in a block and inlines function and method calls. It handles different types of calls such as <SwmToken path="/torch/csrc/jit/passes/inliner.cpp" pos="37:3:5" line-data="      case prim::CallFunction: {">`prim::CallFunction`</SwmToken> and <SwmToken path="/torch/csrc/jit/ir/ir.cpp" pos="1173:3:5" line-data="    case prim::CallMethod:">`prim::CallMethod`</SwmToken>, and recursively processes <SwmToken path="/torch/csrc/jit/passes/autocast.cpp" pos="499:5:7" line-data="    // process sub-blocks, if any">`sub-blocks`</SwmToken>. This function is crucial for optimizing the graph by replacing function calls with their actual implementations.
 
 ```c++
 static void inlineCalls(Block* block) {
@@ -215,9 +215,9 @@ static void inlineCalls(Block* block) {
 
 ---
 
-## getDebugState Function
+## <SwmToken path="/torch/csrc/jit/api/function_impl.h" pos="73:3:3" line-data="  GraphExecutorState getDebugState() {">`getDebugState`</SwmToken> Function
 
-The `getDebugState` function retrieves the debug state of the graph executor. This is useful for debugging and testing purposes, as it provides insights into the execution plans of the graph.
+The <SwmToken path="/torch/csrc/jit/api/function_impl.h" pos="73:3:3" line-data="  GraphExecutorState getDebugState() {">`getDebugState`</SwmToken> function retrieves the debug state of the graph executor. This is useful for debugging and testing purposes, as it provides insights into the execution plans of the graph.
 
 ```c
   GraphExecutorState getDebugState() {
@@ -233,9 +233,9 @@ The `getDebugState` function retrieves the debug state of the graph executor. Th
 
 ---
 
-## get_executor Function
+## <SwmToken path="/torch/csrc/jit/api/function_impl.h" pos="90:4:4" line-data="  GraphExecutor&amp; get_executor() {">`get_executor`</SwmToken> Function
 
-The `get_executor` function ensures that the graph is defined and returns the graph executor. It locks the compile mutex to ensure thread safety and initializes the executor if it is not already defined.
+The <SwmToken path="/torch/csrc/jit/api/function_impl.h" pos="90:4:4" line-data="  GraphExecutor&amp; get_executor() {">`get_executor`</SwmToken> function ensures that the graph is defined and returns the graph executor. It locks the compile mutex to ensure thread safety and initializes the executor if it is not already defined.
 
 ```c
   GraphExecutor& get_executor() {
@@ -265,9 +265,9 @@ The `get_executor` function ensures that the graph is defined and returns the gr
 
 ---
 
-## optimized_graph Function
+## <SwmToken path="/torch/csrc/jit/api/function_impl.cpp" pos="95:9:9" line-data="std::shared_ptr&lt;Graph&gt; GraphFunction::optimized_graph() const {">`optimized_graph`</SwmToken> Function
 
-The `optimized_graph` function returns a copy of the optimized graph. It locks the compile mutex for thread safety and applies various optimizations to the graph if required.
+The <SwmToken path="/torch/csrc/jit/api/function_impl.cpp" pos="95:9:9" line-data="std::shared_ptr&lt;Graph&gt; GraphFunction::optimized_graph() const {">`optimized_graph`</SwmToken> function returns a copy of the optimized graph. It locks the compile mutex for thread safety and applies various optimizations to the graph if required.
 
 ```c++
 std::shared_ptr<Graph> GraphFunction::optimized_graph() const {
@@ -295,9 +295,9 @@ std::shared_ptr<Graph> GraphFunction::optimized_graph() const {
 
 ---
 
-## preoptimizeGraph Function
+## <SwmToken path="/torch/csrc/jit/api/function_impl.cpp" pos="132:2:2" line-data="void preoptimizeGraph(std::shared_ptr&lt;Graph&gt;&amp; graph, bool disable_autocast) {">`preoptimizeGraph`</SwmToken> Function
 
-The `preoptimizeGraph` function applies a series of optimizations to the graph, including inlining, peephole optimization, constant propagation, and autocasting. These optimizations improve the performance and efficiency of the graph.
+The <SwmToken path="/torch/csrc/jit/api/function_impl.cpp" pos="132:2:2" line-data="void preoptimizeGraph(std::shared_ptr&lt;Graph&gt;&amp; graph, bool disable_autocast) {">`preoptimizeGraph`</SwmToken> function applies a series of optimizations to the graph, including inlining, peephole optimization, constant propagation, and autocasting. These optimizations improve the performance and efficiency of the graph.
 
 ```c++
 void preoptimizeGraph(std::shared_ptr<Graph>& graph, bool disable_autocast) {
@@ -333,7 +333,7 @@ void preoptimizeGraph(std::shared_ptr<Graph>& graph, bool disable_autocast) {
 
 ## Autocast Function
 
-The `Autocast` function enables automatic mixed precision (AMP) for the graph if autocasting is enabled. It initializes the autocast context and processes the graph's blocks to apply the necessary type casts.
+The <SwmToken path="/torch/csrc/jit/passes/autocast.cpp" pos="521:2:2" line-data="void Autocast(const std::shared_ptr&lt;Graph&gt;&amp; graph) {">`Autocast`</SwmToken> function enables automatic mixed precision (AMP) for the graph if autocasting is enabled. It initializes the autocast context and processes the graph's blocks to apply the necessary type casts.
 
 ```c++
 void Autocast(const std::shared_ptr<Graph>& graph) {
@@ -358,9 +358,9 @@ void Autocast(const std::shared_ptr<Graph>& graph) {
 
 ---
 
-## handleBlock Function
+## <SwmToken path="/torch/csrc/jit/passes/autocast.cpp" pos="268:2:2" line-data="void handleBlock(Block* block, AutocastContext initial_state) {">`handleBlock`</SwmToken> Function
 
-The `handleBlock` function processes each node in a block to apply autocasting. It handles various types of nodes and applies the appropriate casting policies. This function ensures that the graph operates efficiently with mixed precision.
+The <SwmToken path="/torch/csrc/jit/passes/autocast.cpp" pos="268:2:2" line-data="void handleBlock(Block* block, AutocastContext initial_state) {">`handleBlock`</SwmToken> function processes each node in a block to apply autocasting. It handles various types of nodes and applies the appropriate casting policies. This function ensures that the graph operates efficiently with mixed precision.
 
 ```c++
 // [Note: implicit type promotion in Autocast]
@@ -434,9 +434,9 @@ classDef Style3 color:#000000,fill:#AA7CB9
 
 ---
 
-## PeepholeOptimize
+## <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="456:2:2" line-data="bool PeepholeOptimize(">`PeepholeOptimize`</SwmToken>
 
-The `PeepholeOptimize` function is responsible for optimizing a computational graph by applying a series of peephole optimizations. It initializes a `PeepholeOptimizeImpl` object and runs the optimization process. If any changes are made to the graph, it eliminates dead code that may have been introduced during the optimization.
+The <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="456:2:2" line-data="bool PeepholeOptimize(">`PeepholeOptimize`</SwmToken> function is responsible for optimizing a computational graph by applying a series of peephole optimizations. It initializes a <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="459:1:1" line-data="  PeepholeOptimizeImpl peephole(graph, addmm_fusion_enabled);">`PeepholeOptimizeImpl`</SwmToken> object and runs the optimization process. If any changes are made to the graph, it eliminates dead code that may have been introduced during the optimization.
 
 ```c++
 bool PeepholeOptimize(
@@ -463,7 +463,7 @@ bool PeepholeOptimize(
 
 ### run
 
-The `run` function within `PeepholeOptimize` orchestrates the various peephole optimization passes. It applies multiple optimization techniques such as `PeepholeOptimizeListIdioms`, `PeepholeOptimizeDictIdioms`, `PeepholeOptimizeAliasSensitive`, and `PeepholeOptimizeNonTensor`. This function ensures that all relevant optimizations are applied to the graph.
+The <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="31:3:3" line-data="  bool run() {">`run`</SwmToken> function within <SwmToken path="/torch/csrc/jit/api/function_impl.cpp" pos="137:1:1" line-data="  PeepholeOptimize(graph, true);">`PeepholeOptimize`</SwmToken> orchestrates the various peephole optimization passes. It applies multiple optimization techniques such as <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="33:5:5" line-data="    changed |= PeepholeOptimizeListIdioms(graph_);">`PeepholeOptimizeListIdioms`</SwmToken>, <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="34:5:5" line-data="    changed |= PeepholeOptimizeDictIdioms(graph_);">`PeepholeOptimizeDictIdioms`</SwmToken>, <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="35:5:5" line-data="    changed |= PeepholeOptimizeAliasSensitive(graph_, shape_peepholes_);">`PeepholeOptimizeAliasSensitive`</SwmToken>, and <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="36:5:5" line-data="    changed |= PeepholeOptimizeNonTensor(graph_);">`PeepholeOptimizeNonTensor`</SwmToken>. This function ensures that all relevant optimizations are applied to the graph.
 
 ```c++
   bool run() {
@@ -485,9 +485,9 @@ The `run` function within `PeepholeOptimize` orchestrates the various peephole o
 
 ---
 
-## PeepholeOptimizeNonTensor
+## <SwmToken path="/torch/csrc/jit/passes/peephole_non_tensor.cpp" pos="278:2:2" line-data="bool PeepholeOptimizeNonTensor(const std::shared_ptr&lt;Graph&gt;&amp; graph) {">`PeepholeOptimizeNonTensor`</SwmToken>
 
-The `PeepholeOptimizeNonTensor` function focuses on optimizing non-tensor operations within the computational graph. It creates a `PeepholeOptimizeNonTensorImpl` object and runs the optimization process. After the optimization, it logs the state of the graph.
+The <SwmToken path="/torch/csrc/jit/passes/peephole_non_tensor.cpp" pos="278:2:2" line-data="bool PeepholeOptimizeNonTensor(const std::shared_ptr&lt;Graph&gt;&amp; graph) {">`PeepholeOptimizeNonTensor`</SwmToken> function focuses on optimizing non-tensor operations within the computational graph. It creates a <SwmToken path="/torch/csrc/jit/passes/peephole_non_tensor.cpp" pos="279:1:1" line-data="  PeepholeOptimizeNonTensorImpl peephole(graph);">`PeepholeOptimizeNonTensorImpl`</SwmToken> object and runs the optimization process. After the optimization, it logs the state of the graph.
 
 ```c++
 bool PeepholeOptimizeNonTensor(const std::shared_ptr<Graph>& graph) {
@@ -506,9 +506,9 @@ bool PeepholeOptimizeNonTensor(const std::shared_ptr<Graph>& graph) {
 
 ---
 
-## PeepholeOptimizeListIdioms
+## <SwmToken path="/torch/csrc/jit/passes/peephole_list_idioms.cpp" pos="320:2:2" line-data="bool PeepholeOptimizeListIdioms(">`PeepholeOptimizeListIdioms`</SwmToken>
 
-The `PeepholeOptimizeListIdioms` function targets optimizations specific to list operations in the graph. It initializes a `PeepholeOptimizeListIdiomsImpl` object and executes the optimization. This function is crucial for refining list operations and improving the overall efficiency of the graph.
+The <SwmToken path="/torch/csrc/jit/passes/peephole_list_idioms.cpp" pos="320:2:2" line-data="bool PeepholeOptimizeListIdioms(">`PeepholeOptimizeListIdioms`</SwmToken> function targets optimizations specific to list operations in the graph. It initializes a <SwmToken path="/torch/csrc/jit/passes/peephole_list_idioms.cpp" pos="323:1:1" line-data="  PeepholeOptimizeListIdiomsImpl opt(graph, refine_list_len);">`PeepholeOptimizeListIdiomsImpl`</SwmToken> object and executes the optimization. This function is crucial for refining list operations and improving the overall efficiency of the graph.
 
 ```c++
 bool PeepholeOptimizeListIdioms(
@@ -529,7 +529,7 @@ bool PeepholeOptimizeListIdioms(
 
 ### run
 
-The `run` function in `PeepholeOptimizeListIdioms` collects lists that need refinement and applies the necessary optimizations. If no lists require refinement, it exits early. Otherwise, it performs the refinements and returns whether any changes were made.
+The <SwmToken path="/torch/csrc/jit/passes/peephole_list_idioms.cpp" pos="35:3:3" line-data="  bool run() {">`run`</SwmToken> function in <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="33:5:5" line-data="    changed |= PeepholeOptimizeListIdioms(graph_);">`PeepholeOptimizeListIdioms`</SwmToken> collects lists that need refinement and applies the necessary optimizations. If no lists require refinement, it exits early. Otherwise, it performs the refinements and returns whether any changes were made.
 
 ```c++
   bool run() {
@@ -554,7 +554,7 @@ The `run` function in `PeepholeOptimizeListIdioms` collects lists that need refi
 
 ### run
 
-The `run` function in `PeepholeOptimizeNonTensor` applies optimizations to non-tensor operations by optimizing the blocks within the graph. This function is essential for ensuring that non-tensor operations are as efficient as possible.
+The <SwmToken path="/torch/csrc/jit/passes/peephole_non_tensor.cpp" pos="97:3:3" line-data="  bool run() {">`run`</SwmToken> function in <SwmToken path="/torch/csrc/jit/passes/peephole.cpp" pos="36:5:5" line-data="    changed |= PeepholeOptimizeNonTensor(graph_);">`PeepholeOptimizeNonTensor`</SwmToken> applies optimizations to non-tensor operations by optimizing the blocks within the graph. This function is essential for ensuring that non-tensor operations are as efficient as possible.
 
 ```c++
   bool run() {
@@ -626,9 +626,9 @@ classDef Style3 color:#000000,fill:#AA7CB9
 
 ---
 
-## PeepholeOptimizeAliasSensitive
+## <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="165:2:2" line-data="bool PeepholeOptimizeAliasSensitive(">`PeepholeOptimizeAliasSensitive`</SwmToken>
 
-The function `PeepholeOptimizeAliasSensitive` initializes the optimization process by creating an instance of `PeepholeOptimizeAliasSensitiveImpl` and invoking its `run` method. This sets the stage for the subsequent optimization steps.
+The function <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="165:2:2" line-data="bool PeepholeOptimizeAliasSensitive(">`PeepholeOptimizeAliasSensitive`</SwmToken> initializes the optimization process by creating an instance of <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="168:1:1" line-data="  PeepholeOptimizeAliasSensitiveImpl opt(graph, shape_peepholes);">`PeepholeOptimizeAliasSensitiveImpl`</SwmToken> and invoking its <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="169:5:5" line-data="  return opt.run();">`run`</SwmToken> method. This sets the stage for the subsequent optimization steps.
 
 ```c++
 bool PeepholeOptimizeAliasSensitive(
@@ -649,7 +649,7 @@ bool PeepholeOptimizeAliasSensitive(
 
 ## Running the Optimization
 
-The `run` function is responsible for starting the optimization by calling `runBlock` on the graph's main block. This function is crucial as it initiates the traversal and optimization of the graph.
+The <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="24:3:3" line-data="  bool run() {">`run`</SwmToken> function is responsible for starting the optimization by calling <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="25:3:3" line-data="    return runBlock(graph_-&gt;block());">`runBlock`</SwmToken> on the graph's main block. This function is crucial as it initiates the traversal and optimization of the graph.
 
 ```c++
   bool run() {
@@ -667,7 +667,7 @@ The `run` function is responsible for starting the optimization by calling `runB
 
 ### Traversing and Optimizing Blocks
 
-The `runBlock` function traverses each node in the block and applies specific optimizations. For instance, it handles common patterns like `dim(conv(x))` and simplifies arithmetic operations like `x + 0` or `x * 1`. This function is central to the peephole optimization process as it directly manipulates the nodes to improve performance.
+The <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="40:3:3" line-data="  bool runBlock(Block* block) {">`runBlock`</SwmToken> function traverses each node in the block and applies specific optimizations. For instance, it handles common patterns like <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="47:3:9" line-data="      // dim(conv(x)) extremely common and prevents Conv-&gt;BN fusion">`dim(conv(x))`</SwmToken> and simplifies arithmetic operations like <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="83:3:7" line-data="        // x + 0 == x - 0 == x">`x + 0`</SwmToken> or <SwmToken path="/torch/csrc/jit/passes/peephole_alias_sensitive.cpp" pos="112:3:7" line-data="        // x * 1 == x / 1 == x">`x * 1`</SwmToken>. This function is central to the peephole optimization process as it directly manipulates the nodes to improve performance.
 
 ```c++
   bool runBlock(Block* block) {
@@ -703,7 +703,7 @@ The `runBlock` function traverses each node in the block and applies specific op
 
 ## Validating Node Movements
 
-The `moveAfterTopologicallyValid` function ensures that a node can be moved after another node while maintaining the graph's topological order. It calls `tryMove` to perform this validation.
+The <SwmToken path="/torch/csrc/jit/ir/alias_analysis.cpp" pos="1525:4:4" line-data="bool AliasDb::moveAfterTopologicallyValid(Node* n, Node* movePoint) {">`moveAfterTopologicallyValid`</SwmToken> function ensures that a node can be moved after another node while maintaining the graph's topological order. It calls <SwmToken path="/torch/csrc/jit/ir/alias_analysis.cpp" pos="1526:3:3" line-data="  return tryMove(n, movePoint, MoveSide::AFTER, /*dryRun=*/false);">`tryMove`</SwmToken> to perform this validation.
 
 ```c++
 bool AliasDb::moveAfterTopologicallyValid(Node* n, Node* movePoint) {
@@ -721,7 +721,7 @@ bool AliasDb::moveAfterTopologicallyValid(Node* n, Node* movePoint) {
 
 ### Attempting Node Movements
 
-The `tryMove` function attempts to move a node before or after another node while preserving value dependencies. It builds a working set of dependencies and checks if the move is possible without violating any constraints. This function is critical for ensuring that node movements do not disrupt the graph's integrity.
+The <SwmToken path="/torch/csrc/jit/ir/alias_analysis.cpp" pos="1744:4:4" line-data="bool AliasDb::tryMove(">`tryMove`</SwmToken> function attempts to move a node before or after another node while preserving value dependencies. It builds a working set of dependencies and checks if the move is possible without violating any constraints. This function is critical for ensuring that node movements do not disrupt the graph's integrity.
 
 ```c++
 // Try to move `toMove` before/after `movePoint` while preserving value
@@ -757,7 +757,7 @@ bool AliasDb::tryMove(
 
 ## Checking for Side Effects
 
-The `hasSideEffects` function determines if a node has side effects, which is essential for deciding whether a node can be safely moved. Nodes with side effects cannot be reordered, ensuring that the graph's behavior remains consistent.
+The <SwmToken path="/torch/csrc/jit/ir/ir.cpp" pos="1161:4:4" line-data="bool Node::hasSideEffects() const {">`hasSideEffects`</SwmToken> function determines if a node has side effects, which is essential for deciding whether a node can be safely moved. Nodes with side effects cannot be reordered, ensuring that the graph's behavior remains consistent.
 
 ```c++
 bool Node::hasSideEffects() const {
@@ -793,7 +793,7 @@ bool Node::hasSideEffects() const {
 
 ## Alias Analysis
 
-The `aliasAnalysisKind` function retrieves the alias analysis kind for an operator, which helps in understanding how the operator interacts with memory. This information is used to make decisions about node movements and optimizations.
+The <SwmToken path="/torch/csrc/jit/runtime/operator.h" pos="207:3:3" line-data="  c10::AliasAnalysisKind aliasAnalysisKind() const {">`AliasAnalysisKind`</SwmToken> function retrieves the alias analysis kind for an operator, which helps in understanding how the operator interacts with memory. This information is used to make decisions about node movements and optimizations.
 
 ```c
   c10::AliasAnalysisKind aliasAnalysisKind() const {
@@ -820,7 +820,7 @@ The `aliasAnalysisKind` function retrieves the alias analysis kind for an operat
 
 ## Retrieving Function Schema
 
-The `schema` function retrieves the function schema for an operator, which includes information about its inputs, outputs, and aliasing behavior. This schema is crucial for understanding how the operator can be optimized.
+The <SwmToken path="/torch/csrc/jit/runtime/operator.h" pos="163:6:6" line-data="  const FunctionSchema&amp; schema() const {">`schema`</SwmToken> function retrieves the function schema for an operator, which includes information about its inputs, outputs, and aliasing behavior. This schema is crucial for understanding how the operator can be optimized.
 
 ```c
   const FunctionSchema& schema() const {
@@ -856,7 +856,7 @@ The `schema` function retrieves the function schema for an operator, which inclu
 
 ## Parsing Function Schema
 
-The `parseSchema` function parses a function schema from a string, ensuring that the schema is correctly interpreted and can be used for optimization and analysis.
+The <SwmToken path="/torch/csrc/jit/frontend/function_schema_parser.cpp" pos="416:2:2" line-data="FunctionSchema parseSchema(const std::string&amp; schema, bool allow_typevars) {">`parseSchema`</SwmToken> function parses a function schema from a string, ensuring that the schema is correctly interpreted and can be used for optimization and analysis.
 
 ```c++
 FunctionSchema parseSchema(const std::string& schema, bool allow_typevars) {
@@ -878,7 +878,7 @@ FunctionSchema parseSchema(const std::string& schema, bool allow_typevars) {
 
 ## Parsing Schema or Name
 
-The `parseSchemaOrName` function parses either a function schema or an operator name from a string. This flexibility allows for handling different types of inputs during schema parsing.
+The <SwmToken path="/torch/csrc/jit/frontend/function_schema_parser.cpp" pos="404:10:10" line-data="std::variant&lt;OperatorName, FunctionSchema&gt; parseSchemaOrName(">`parseSchemaOrName`</SwmToken> function parses either a function schema or an operator name from a string. This flexibility allows for handling different types of inputs during schema parsing.
 
 ```c++
 std::variant<OperatorName, FunctionSchema> parseSchemaOrName(
@@ -904,7 +904,7 @@ std::variant<OperatorName, FunctionSchema> parseSchemaOrName(
 
 ## Parsing a Single Declaration
 
-The `parseExactlyOneDeclaration` function parses exactly one function or operator declaration, ensuring that the input string is correctly interpreted as a single schema or name.
+The <SwmToken path="/torch/csrc/jit/frontend/function_schema_parser.cpp" pos="140:11:11" line-data="  std::variant&lt;OperatorName, FunctionSchema&gt; parseExactlyOneDeclaration() {">`parseExactlyOneDeclaration`</SwmToken> function parses exactly one function or operator declaration, ensuring that the input string is correctly interpreted as a single schema or name.
 
 ```c++
   std::variant<OperatorName, FunctionSchema> parseExactlyOneDeclaration() {
@@ -925,7 +925,7 @@ The `parseExactlyOneDeclaration` function parses exactly one function or operato
 
 ## Parsing Declarations
 
-The `parseDeclaration` function parses a full function or operator declaration, including its arguments and return types. This detailed parsing is essential for understanding the complete schema of an operator.
+The <SwmToken path="/torch/csrc/jit/frontend/function_schema_parser.cpp" pos="34:11:11" line-data="  std::variant&lt;OperatorName, FunctionSchema&gt; parseDeclaration() {">`parseDeclaration`</SwmToken> function parses a full function or operator declaration, including its arguments and return types. This detailed parsing is essential for understanding the complete schema of an operator.
 
 ```c++
   std::variant<OperatorName, FunctionSchema> parseDeclaration() {

@@ -1,9 +1,9 @@
 ---
 title: Training Mode Toggle
 ---
-This document provides an overview of the `_train` function, which is responsible for toggling the training mode of a model. It explains how the function works, including the steps it takes to switch the model between training and evaluation modes.
+This document provides an overview of the <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="211:3:3" line-data="    def _train(self, mode: bool = True):">`_train`</SwmToken> function, which is responsible for toggling the training mode of a model. It explains how the function works, including the steps it takes to switch the model between training and evaluation modes.
 
-The `_train` function is designed to switch a model between training and evaluation modes. When the function is called with the mode set to `True`, it transitions the model to training mode by calling `_move_exported_model_to_train`. This involves replacing certain operations like dropout and batchnorm with their training counterparts. Conversely, if the mode is set to `False`, the function calls `_move_exported_model_to_eval`, which switches the model to evaluation mode by replacing these operations with their evaluation counterparts. This ensures that the model behaves correctly during both training and evaluation phases.
+The <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="211:3:3" line-data="    def _train(self, mode: bool = True):">`_train`</SwmToken> function is designed to switch a model between training and evaluation modes. When the function is called with the mode set to `True`, it transitions the model to training mode by calling <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="213:1:1" line-data="            _move_exported_model_to_train(self)">`_move_exported_model_to_train`</SwmToken>. This involves replacing certain operations like dropout and batchnorm with their training counterparts. Conversely, if the mode is set to `False`, the function calls <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="174:2:2" line-data="def _move_exported_model_to_eval(model: torch.fx.GraphModule):">`_move_exported_model_to_eval`</SwmToken>, which switches the model to evaluation mode by replacing these operations with their evaluation counterparts. This ensures that the model behaves correctly during both training and evaluation phases.
 
 Here is a high level diagram of the flow, showing only the most important functions:
 
@@ -81,7 +81,7 @@ classDef Style3 color:#000000,fill:#AA7CB9
 
 ## \_train
 
-`_train` is responsible for toggling the training mode of the model. It calls `_move_exported_model_to_train` if the mode is set to `True`, otherwise, it calls `_move_exported_model_to_eval`.
+<SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="211:3:3" line-data="    def _train(self, mode: bool = True):">`_train`</SwmToken> is responsible for toggling the training mode of the model. It calls <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="213:1:1" line-data="            _move_exported_model_to_train(self)">`_move_exported_model_to_train`</SwmToken> if the mode is set to `True`, otherwise, it calls <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="215:1:1" line-data="            _move_exported_model_to_eval(self)">`_move_exported_model_to_eval`</SwmToken>.
 
 ```python
     def _train(self, mode: bool = True):
@@ -99,9 +99,9 @@ classDef Style3 color:#000000,fill:#AA7CB9
 
 ---
 
-### \_move_exported_model_to_eval
+### <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="174:2:2" line-data="def _move_exported_model_to_eval(model: torch.fx.GraphModule):">`_move_exported_model_to_eval`</SwmToken>
 
-`_move_exported_model_to_eval` switches the model to evaluation mode by replacing certain operations like dropout and batchnorm to their evaluation counterparts.
+<SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="174:2:2" line-data="def _move_exported_model_to_eval(model: torch.fx.GraphModule):">`_move_exported_model_to_eval`</SwmToken> switches the model to evaluation mode by replacing certain operations like dropout and batchnorm to their evaluation counterparts.
 
 ```python
 def _move_exported_model_to_eval(model: torch.fx.GraphModule):
@@ -124,9 +124,9 @@ def _move_exported_model_to_eval(model: torch.fx.GraphModule):
 
 ---
 
-### \_replace_dropout
+### <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="38:2:2" line-data="def _replace_dropout(m: torch.fx.GraphModule, train_to_eval: bool):">`_replace_dropout`</SwmToken>
 
-`_replace_dropout` manually switches dropout patterns between training and evaluation modes. This is necessary because calling `model.train()` or `model.eval()` does not automatically switch dropout behavior in exported models.
+<SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="38:2:2" line-data="def _replace_dropout(m: torch.fx.GraphModule, train_to_eval: bool):">`_replace_dropout`</SwmToken> manually switches dropout patterns between training and evaluation modes. This is necessary because calling <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="43:7:11" line-data="    however, calling `model.train()` or `model.eval()` does not automatically switch">`model.train()`</SwmToken> or <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="43:17:21" line-data="    however, calling `model.train()` or `model.eval()` does not automatically switch">`model.eval()`</SwmToken> does not automatically switch dropout behavior in exported models.
 
 ```python
 def _replace_dropout(m: torch.fx.GraphModule, train_to_eval: bool):
@@ -160,9 +160,9 @@ def _replace_dropout(m: torch.fx.GraphModule, train_to_eval: bool):
 
 ---
 
-### \_get_aten_graph_module_for_pattern
+### <SwmToken path="/torch/ao/quantization/pt2e/utils.py" pos="351:2:2" line-data="def _get_aten_graph_module_for_pattern(">`_get_aten_graph_module_for_pattern`</SwmToken>
 
-`_get_aten_graph_module_for_pattern` converts a given pattern to an FX graph with decomposed aten operations. This is used to match and replace specific subgraphs in the model.
+<SwmToken path="/torch/ao/quantization/pt2e/utils.py" pos="351:2:2" line-data="def _get_aten_graph_module_for_pattern(">`_get_aten_graph_module_for_pattern`</SwmToken> converts a given pattern to an FX graph with decomposed aten operations. This is used to match and replace specific subgraphs in the model.
 
 ```python
 def _get_aten_graph_module_for_pattern(
@@ -196,9 +196,9 @@ def _get_aten_graph_module_for_pattern(
 
 ---
 
-### capture_pre_autograd_graph
+### <SwmToken path="/torch/_export/__init__.py" pos="72:2:2" line-data="def capture_pre_autograd_graph(">`capture_pre_autograd_graph`</SwmToken>
 
-`capture_pre_autograd_graph` captures the graph of a given pattern before autograd transformations. This is essential for ensuring that the pattern matching and replacement are accurate.
+<SwmToken path="/torch/_export/__init__.py" pos="72:2:2" line-data="def capture_pre_autograd_graph(">`capture_pre_autograd_graph`</SwmToken> captures the graph of a given pattern before autograd transformations. This is essential for ensuring that the pattern matching and replacement are accurate.
 
 ```python
 def capture_pre_autograd_graph(
@@ -262,7 +262,7 @@ classDef Style3 color:#000000,fill:#AA7CB9
 
 ## Moving Exported Model to Train Mode
 
-The function `_move_exported_model_to_train` is responsible for transitioning an exported `GraphModule` to train mode. This involves switching certain operations like dropout and batchnorm to their training behaviors. This is crucial for Quantization Aware Training (QAT) as it ensures the model behaves correctly during training.
+The function <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="213:1:1" line-data="            _move_exported_model_to_train(self)">`_move_exported_model_to_train`</SwmToken> is responsible for transitioning an exported <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="38:11:11" line-data="def _replace_dropout(m: torch.fx.GraphModule, train_to_eval: bool):">`GraphModule`</SwmToken> to train mode. This involves switching certain operations like dropout and batchnorm to their training behaviors. This is crucial for Quantization Aware Training (QAT) as it ensures the model behaves correctly during training.
 
 ```python
     _replace_dropout(model, train_to_eval=False)
@@ -278,9 +278,9 @@ The function `_move_exported_model_to_train` is responsible for transitioning an
 
 ---
 
-## Replacing BatchNorm Patterns
+## Replacing <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="94:3:3" line-data="    Switch batchnorm patterns in the model between train and eval modes.">`batchnorm`</SwmToken> Patterns
 
-The function `_replace_batchnorm` switches batchnorm patterns in the model between train and eval modes. Since exported models do not automatically switch batchnorm behavior with `model.train()` or `model.eval()`, this function manually rewrites the aten batchnorm patterns to achieve the desired effect. This ensures that the batchnorm layers behave correctly during training and evaluation.
+The function <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="92:2:2" line-data="def _replace_batchnorm(m: torch.fx.GraphModule, train_to_eval: bool):">`_replace_batchnorm`</SwmToken> switches batchnorm patterns in the model between train and eval modes. Since exported models do not automatically switch batchnorm behavior with <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="97:7:11" line-data="    however, calling `model.train()` or `model.eval()` does not automatically switch">`model.train()`</SwmToken> or <SwmToken path="/torch/ao/quantization/pt2e/export_utils.py" pos="97:17:21" line-data="    however, calling `model.train()` or `model.eval()` does not automatically switch">`model.eval()`</SwmToken>, this function manually rewrites the aten batchnorm patterns to achieve the desired effect. This ensures that the batchnorm layers behave correctly during training and evaluation.
 
 ```python
 def _replace_batchnorm(m: torch.fx.GraphModule, train_to_eval: bool):
